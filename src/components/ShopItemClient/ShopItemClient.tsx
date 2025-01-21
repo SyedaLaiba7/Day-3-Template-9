@@ -1,6 +1,6 @@
 'use client';
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import SocialIcon from "@/components/SocialIcon/SocialIcon";
 import Swal from "sweetalert2";
@@ -10,11 +10,20 @@ type Product = {
   price: number;
   imageUrl: string;
   originalPrice?: number;
-  id: number;
+  id: string;
 };
 
 const ShopItemClient = ({ product }: { product: Product }) => {
+  const [isClient, setIsClient] = useState(false);
+
+  // Ensure this component is rendered only on the client
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const addToCart = (product: Product) => {
+    if (!isClient) return;
+
     const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
     const updatedCart = [...cartItems, product];
     localStorage.setItem("cart", JSON.stringify(updatedCart));
@@ -28,6 +37,10 @@ const ShopItemClient = ({ product }: { product: Product }) => {
       window.location.reload();
     });
   };
+
+  if (!isClient) {
+    return null; // Avoid rendering until client-side rendering
+  }
 
   return (
     <div>

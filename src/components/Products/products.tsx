@@ -6,7 +6,7 @@ import React from "react";
 
 // Updated Product Type with optional fields from your Sanity schema
 type Product = {
-  id: string;
+  _id: string;
   name: string;
   price: number;
   image: string;
@@ -61,7 +61,7 @@ const Products = async () => {
       {/* Product Grid */}
       <div className="grid grid-cols-3 gap-4 max-md:grid-cols-2 max-sm:grid-cols-1">
         {products.map((product, index) => (
-          <Link key={index} href={`/detail/${product.id}`}>
+          <Link key={index} href={`/detail/${product._id}`}>
             <div className="border border-gray-200 rounded cursor-pointer">
               <div className="relative">
                 <Image
