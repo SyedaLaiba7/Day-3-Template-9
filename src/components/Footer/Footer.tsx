@@ -161,7 +161,7 @@ const Footer = () => {
 
       <section className="bg-orange-400 h-16 mt-2">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-6 lg:px-24 h-full">
-          <p>Copyright © 2022 by Ayeman. All Rights Reserved.</p>
+          <p>Copyright © 2022 by Syeda Laiba. All Rights Reserved.</p>
           <div className="flex space-x-4">
             {/* Facebook */}
             <a
